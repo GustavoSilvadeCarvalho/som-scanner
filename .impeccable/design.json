@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T00:00:00Z",
+  "title": "Design System: Som Scanner",
+  "extensions": {
+    "colorMeta": {
+      "ambar": { "role": "primary", "displayName": "Brand Amber", "canonical": "#f5a524", "tonalRamp": ["#180600", "#3c1c00", "#653400", "#914f00", "#b67100", "#d0994e", "#ebc18d", "#ffeac8"] },
+      "ambar2": { "role": "primary", "displayName": "Hot Amber", "canonical": "#ffbf47", "tonalRamp": ["#160700", "#391f00", "#5f3900", "#895500", "#ad7700", "#c99d51", "#e5c48f", "#ffebc9"] },
+      "ambar-deep": { "role": "primary", "displayName": "Pressed Amber", "canonical": "#e0921a", "tonalRamp": ["#180600", "#3c1c00", "#653400", "#904f00", "#b57100", "#d09956", "#ebc191", "#ffe9cb"] },
+      "tinta": { "role": "neutral", "displayName": "Amber Ink", "canonical": "#16120a", "tonalRamp": ["#0c0b09", "#272520", "#45423b", "#656158", "#878278", "#a8a59d", "#ccc9c3", "#f0eeea"] },
+      "chao": { "role": "neutral", "displayName": "Night Ground", "canonical": "#0d0e0b", "tonalRamp": ["#0b0b0a", "#252524", "#414240", "#60625e", "#82837f", "#a4a5a2", "#c9c9c7", "#eeefed"] },
+      "chao2": { "role": "neutral", "displayName": "Ground Raised", "canonical": "#121410", "tonalRamp": ["#0b0b0a", "#242523", "#41433f", "#60625d", "#81837e", "#a4a6a2", "#c8cac7", "#eeefed"] },
+      "painel": { "role": "neutral", "displayName": "Panel Olive", "canonical": "#171a14", "tonalRamp": ["#0b0b0a", "#242622", "#40433e", "#5f635c", "#80847d", "#a3a6a0", "#c8cac6", "#edefec"] },
+      "linha": { "role": "neutral", "displayName": "Steel Hairline", "canonical": "#2a2e25", "tonalRamp": ["#0a0c09", "#242621", "#40433c", "#5f635a", "#80847a", "#a3a69f", "#c7cac4", "#edefeb"] },
+      "linha2": { "role": "neutral", "displayName": "Steel Heavy", "canonical": "#3c4135", "tonalRamp": ["#0a0c09", "#242620", "#40443b", "#5e6358", "#7f8578", "#a3a79d", "#c7cac3", "#edefea"] },
+      "osso": { "role": "neutral", "displayName": "Bone", "canonical": "#e7e3d6", "tonalRamp": ["#0c0b08", "#272520", "#44423a", "#646157", "#868278", "#a8a59c", "#cbc9c2", "#f0eeea"] },
+      "fraco": { "role": "neutral", "displayName": "Faded Bone", "canonical": "#a3a294", "tonalRamp": ["#0c0b08", "#262520", "#43423a", "#636256", "#848377", "#a6a69c", "#cacac2", "#efefea"] },
+      "alert-ground": { "role": "neutral", "displayName": "Alert Ground", "canonical": "#1d1a10", "tonalRamp": ["#0c0b08", "#272520", "#44423a", "#646156", "#868277", "#a8a59c", "#cbc9c2", "#f0eeea"] },
+      "alert-edge": { "role": "neutral", "displayName": "Alert Edge", "canonical": "#5a4716", "tonalRamp": ["#0f0a02", "#2d240f", "#4d4021", "#715f35", "#938056", "#b2a481", "#d3c8af", "#f5eedd"] },
+      "alert-text": { "role": "neutral", "displayName": "Alert Text", "canonical": "#f1d79a", "tonalRamp": ["#100a01", "#2e2409", "#4f4019", "#735e2a", "#95804c", "#b5a37a", "#d5c8aa", "#f6eeda"] },
+      "alert-strong": { "role": "neutral", "displayName": "Alert Strong", "canonical": "#fff1cc", "tonalRamp": ["#0e0b04", "#2a2516", "#49412c", "#6b6043", "#8d8263", "#aea48c", "#d0c9b6", "#f3eee2"] },
+      "rarity-common": { "role": "data", "displayName": "Common", "canonical": "#b4b9c4", "tonalRamp": ["#0a0b0e", "#232529", "#3f4248", "#5d616a", "#7e828c", "#a1a5ad", "#c6c9cf", "#edeef2"] },
+      "rarity-uncommon": { "role": "data", "displayName": "Uncommon", "canonical": "#58d36c", "tonalRamp": ["#001100", "#003003", "#00530e", "#00781c", "#299b41", "#6bbb74", "#a1daa5", "#d5fad7"] },
+      "rarity-rare": { "role": "data", "displayName": "Rare", "canonical": "#4ea8ff", "tonalRamp": ["#000b1f", "#00264a", "#004379", "#0363ac", "#3686d2", "#6eaae7", "#a2cefc", "#d5f2ff"] },
+      "rarity-epic": { "role": "data", "displayName": "Epic", "canonical": "#b875ff", "tonalRamp": ["#120221", "#31114d", "#53267e", "#793cb3", "#9b60d9", "#b98dee", "#d8b8ff", "#f8e4ff"] },
+      "rarity-legendary": { "role": "data", "displayName": "Legendary", "canonical": "#ffb534", "tonalRamp": ["#170700", "#3b1d00", "#633600", "#8e5100", "#b27300", "#cd9b4d", "#e9c28c", "#ffeac8"] },
+      "rarity-mythic": { "role": "data", "displayName": "Mythic", "canonical": "#ff5252", "tonalRamp": ["#210000", "#4e0006", "#7f0513", "#b41423", "#dd4445", "#f47b75", "#ffada5", "#ffddd7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only; uppercase, emphasised phrase in amber." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s, followed by an 18px Faded Bone paragraph." },
+      "title": { "displayName": "Title", "purpose": "Feature, step and FAQ titles; uppercase." },
+      "numeral": { "displayName": "Numeral", "purpose": "Amber step counters and match percentage; tabular figures." },
+      "body": { "displayName": "Body", "purpose": "Running copy in sentence case, 44-72ch measures." },
+      "body-lead": { "displayName": "Lead", "purpose": "Hero subcopy, 44ch." },
+      "label": { "displayName": "Label", "purpose": "Tracked uppercase meta line, header tagline, captions, rarity tags." },
+      "label-small": { "displayName": "Label Small", "purpose": "Scanner panel top bar." },
+      "button": { "displayName": "Button", "purpose": "Primary chamfered button label." }
+    },
+    "shadows": [
+      { "name": "panel-lift", "value": "0 30px 60px -20px rgba(0,0,0,.7)", "purpose": "Ambient lift under the scanner panel only." }
+    ],
+    "effects": [
+      { "name": "grain", "value": "fixed full-viewport fractalNoise SVG (baseFrequency .9, 2 octaves, 160px tile), opacity .05, pointer-events none, above content", "purpose": "Material tooth over the whole page." },
+      { "name": "header-glass", "value": "background rgba(13,14,11,.92); backdrop-filter: saturate(1.2) blur(8px)", "purpose": "Sticky header only." },
+      { "name": "chamfer", "value": "clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)", "purpose": "Primary action plate." },
+      { "name": "corner-brackets", "value": "8 amber linear-gradient strips, 22px x 2px, on a pseudo-element inset -7px", "purpose": "Frames evidence (scanner panel, app screenshot)." },
+      { "name": "focus-ring", "value": "outline: 2px solid #ffbf47; outline-offset: 4px", "purpose": "Global keyboard focus." }
+    ],
+    "motion": [
+      { "name": "ease-settle", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Settling motion: waveform resolve, row reveal, FAQ icon rotation." },
+      { "name": "color-fast", "value": "150ms ease-out", "purpose": "Button fill colour changes." },
+      { "name": "fade", "value": "350-400ms ease-out", "purpose": "Match line and item row opacity." },
+      { "name": "row-stagger", "value": "90ms per row", "purpose": "Item rows reveal in rarity order." },
+      { "name": "listen-oscillate", "value": "scaleY .25 to 1.05, 900ms ease-in-out infinite alternate, per-bar phase offset", "purpose": "Waveform bars while listening." },
+      { "name": "status-blink", "value": "1s steps(2, jump-none) infinite, 25% opacity at midpoint", "purpose": "Status dot while listening." },
+      { "name": "reduced-motion", "value": "all animations and transitions off; panel shows resolved state", "purpose": "prefers-reduced-motion: reduce and no-JS fallback." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "960px" },
+      { "name": "mobile", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Chamfered amber plate for the download action, with a line icon.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v12m0 0-5-5m5 5 5-5M4 19h16\"/></svg>Baixar para Windows</a>",
+      "css": ".ds-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:12px;color:var(--tinta,#16120a);text-decoration:none;font:800 21px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.06em;text-transform:uppercase;padding:20px 34px 20px 30px}.ds-btn::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ambar,#f5a524);transition:background-color .15s ease-out;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}.ds-btn:hover::before{background:var(--ambar2,#ffbf47)}.ds-btn:active::before{background:#e0921a}.ds-btn:focus-visible{outline:2px solid var(--ambar2,#ffbf47);outline-offset:4px}.ds-btn svg{width:22px;height:22px;flex:none}"
+    },
+    {
+      "name": "Meta Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Tracked condensed uppercase line stating price, platform and version beside the button.",
+      "html": "<small class=\"ds-meta\">Grátis · Windows 10/11 (64 bits) · versão 1.0.0</small>",
+      "css": ".ds-meta{font:600 14px/1.5 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.12em;text-transform:uppercase;color:var(--fraco,#a3a294)}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "header",
+      "description": "Slim sticky header: icon, wordmark, game name label.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-header-icon\"></span><b>SOM SCANNER</b><span class=\"ds-header-tag\">para Arena Breakout Infinite</span></header>",
+      "css": ".ds-header{display:flex;align-items:center;gap:12px;height:60px;padding:0 28px;border-bottom:1px solid var(--linha,#2a2e25);background:rgba(13,14,11,.92);backdrop-filter:saturate(1.2) blur(8px);color:var(--osso,#e7e3d6)}.ds-header-icon{width:30px;height:30px;background:var(--painel,#171a14);border:1px solid var(--linha,#2a2e25)}.ds-header b{font:700 19px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.12em}.ds-header-tag{margin-left:auto;font:600 14px/1.2 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.14em;text-transform:uppercase;color:var(--fraco,#a3a294)}"
+    },
+    {
+      "name": "Rarity Tag",
+      "kind": "chip",
+      "refersTo": "rarity-tag",
+      "description": "Diamond-marked tracked label coloured by game rarity tier; result data only.",
+      "html": "<span class=\"ds-rar ds-r-leg\">Legendary</span> <span class=\"ds-rar ds-r-epic\">Epic</span> <span class=\"ds-rar ds-r-rare\">Rare</span>",
+      "css": ".ds-rar{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.1em;text-transform:uppercase;margin-right:16px}.ds-rar::before{content:'';width:8px;height:8px;background:currentColor;transform:rotate(45deg)}.ds-r-leg{color:var(--legendary,#ffb534)}.ds-r-epic{color:var(--epic,#b875ff)}.ds-r-rare{color:var(--rare,#4ea8ff)}"
+    },
+    {
+      "name": "Scanner Panel",
+      "kind": "card",
+      "refersTo": "scanner-panel",
+      "description": "Signature component: bracketed panel with status, waveform, match and rarity rows.",
+      "html": "<figure class=\"ds-scan\"><div class=\"ds-scan-top\"><span>Som Scanner</span><span class=\"ds-estado\"><i></i>Reconhecido</span></div><div class=\"ds-onda\"><span style=\"--h:.3\"></span><span style=\"--h:.6\"></span><span style=\"--h:.9\"></span><span style=\"--h:.5\"></span><span style=\"--h:1\"></span><span style=\"--h:.7\"></span><span style=\"--h:.4\"></span><span style=\"--h:.2\"></span></div><div class=\"ds-match\"><div><strong>Item_Container_Big_Metal_Up</strong><small>5 itens possíveis</small></div><span class=\"ds-pct\">100%</span></div><ul class=\"ds-itens\"><li><span>Fuel tank</span><span class=\"ds-tam\">2x3</span><span class=\"ds-rar\">Legendary</span></li><li><span>Oil Drum</span><span class=\"ds-tam\">2x2</span><span class=\"ds-rar ds-epic\">Epic</span></li></ul></figure>",
+      "css": ".ds-scan{position:relative;margin:12px;background:var(--painel,#171a14);border:1px solid var(--linha,#2a2e25);padding:22px 24px 20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);color:var(--osso,#e7e3d6);font:400 16px/1.6 var(--texto,'Barlow','Segoe UI',sans-serif)}.ds-scan::after{content:'';position:absolute;inset:-7px;pointer-events:none;background:linear-gradient(#f5a524,#f5a524) 0 0/22px 2px no-repeat,linear-gradient(#f5a524,#f5a524) 0 0/2px 22px no-repeat,linear-gradient(#f5a524,#f5a524) 100% 0/22px 2px no-repeat,linear-gradient(#f5a524,#f5a524) 100% 0/2px 22px no-repeat,linear-gradient(#f5a524,#f5a524) 0 100%/22px 2px no-repeat,linear-gradient(#f5a524,#f5a524) 0 100%/2px 22px no-repeat,linear-gradient(#f5a524,#f5a524) 100% 100%/22px 2px no-repeat,linear-gradient(#f5a524,#f5a524) 100% 100%/2px 22px no-repeat}.ds-scan-top{display:flex;justify-content:space-between;align-items:center;font:600 13px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.16em;text-transform:uppercase;color:var(--fraco,#a3a294)}.ds-estado{display:inline-flex;align-items:center;gap:8px;color:var(--osso,#e7e3d6)}.ds-estado i{width:8px;height:8px;border-radius:50%;background:var(--ambar,#f5a524)}.ds-onda{display:flex;align-items:center;gap:3px;height:72px;margin:18px 0 16px;border-top:1px solid var(--linha,#2a2e25);border-bottom:1px solid var(--linha,#2a2e25)}.ds-onda span{flex:1;height:calc(var(--h)*100%);background:var(--ambar,#f5a524)}.ds-match{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}.ds-match strong{display:block;font:700 24px/1.1 var(--display,'Saira Condensed','Arial Narrow',sans-serif)}.ds-match small{display:block;margin-top:4px;color:var(--fraco,#a3a294);font-size:15px}.ds-pct{font:800 48px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);color:var(--uncommon,#58d36c);font-variant-numeric:tabular-nums}.ds-itens{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--linha,#2a2e25)}.ds-itens li{display:grid;grid-template-columns:1fr auto 108px;gap:14px;align-items:center;padding:10px 2px;border-bottom:1px solid var(--linha,#2a2e25)}.ds-tam{color:var(--fraco,#a3a294);font-variant-numeric:tabular-nums}.ds-itens .ds-rar{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);letter-spacing:.1em;text-transform:uppercase;color:var(--legendary,#ffb534)}.ds-itens .ds-rar::before{content:'';width:8px;height:8px;background:currentColor;transform:rotate(45deg)}.ds-itens .ds-epic{color:var(--epic,#b875ff)}"
+    },
+    {
+      "name": "Feature Row",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Hairline-divided grid cell with an amber line icon, uppercase title and faded body. No card.",
+      "html": "<div class=\"ds-recurso\"><svg viewBox=\"0 0 32 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M4 6h24l-9 11v9l-6-3v-6z\"/></svg><h3>Filtros do jogo</h3><p>Escolha o tamanho e o tipo de carga para ver só o que realmente pode vir.</p></div>",
+      "css": ".ds-recurso{display:grid;grid-template-columns:44px 1fr;gap:6px 20px;padding:32px 0 34px;border-top:1px solid var(--linha,#2a2e25);border-bottom:1px solid var(--linha,#2a2e25);color:var(--osso,#e7e3d6)}.ds-recurso svg{width:36px;height:36px;color:var(--ambar,#f5a524);grid-row:span 2}.ds-recurso h3{margin:0;font:700 24px/1.1 var(--display,'Saira Condensed','Arial Narrow',sans-serif);text-transform:uppercase;letter-spacing:.02em}.ds-recurso p{margin:0;color:var(--fraco,#a3a294);font:400 17px/1.6 var(--texto,'Barlow','Segoe UI',sans-serif);max-width:46ch}"
+    },
+    {
+      "name": "Disclosure",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "FAQ row: uppercase summary with an amber plus that rotates to an x when open.",
+      "html": "<details class=\"ds-faq\"><summary>Isso mexe no jogo?<svg viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M10 3v14M3 10h14\"/></svg></summary><p>Não. Ele só escuta o áudio que já sai no seu PC.</p></details>",
+      "css": ".ds-faq{border-top:1px solid var(--linha,#2a2e25);border-bottom:1px solid var(--linha,#2a2e25);color:var(--osso,#e7e3d6)}.ds-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:700 22px/1.2 var(--display,'Saira Condensed','Arial Narrow',sans-serif);text-transform:uppercase;letter-spacing:.02em}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary:hover{color:var(--ambar2,#ffbf47)}.ds-faq summary:focus-visible{outline:2px solid var(--ambar2,#ffbf47);outline-offset:4px}.ds-faq svg{width:20px;height:20px;flex:none;color:var(--ambar,#f5a524);transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-faq[open] svg{transform:rotate(45deg)}.ds-faq p{margin:0;color:var(--fraco,#a3a294);padding:0 0 24px;max-width:66ch;font:400 17px/1.6 var(--texto,'Barlow','Segoe UI',sans-serif)}"
+    },
+    {
+      "name": "Warning Callout",
+      "kind": "custom",
+      "refersTo": "alert-callout",
+      "description": "Amber-steeped plate for genuine warnings (SmartScreen).",
+      "html": "<div class=\"ds-aviso\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20z\"/><path d=\"M12 10v5M12 17.5v.5\"/></svg><p>O Windows pode mostrar um aviso. Clique em <b>Mais informações</b>.</p></div>",
+      "css": ".ds-aviso{display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:#1d1a10;border:1px solid #5a4716;color:#f1d79a;font:400 17px/1.6 var(--texto,'Barlow','Segoe UI',sans-serif)}.ds-aviso p{margin:0}.ds-aviso svg{width:26px;height:26px;flex:none;color:var(--ambar,#f5a524);margin-top:1px}.ds-aviso b{color:#fff1cc}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night-Room Tactical HUD",
+    "overview": "The page reads like an operator's heads-up display seen in a dark room: a near-black, olive-tinted ground, bone-coloured text, and a single brand amber that marks everything you can act on or should look at. Structure comes from hairline steel rules, not boxes or cards. Evidence (the live scanner panel, the real app screenshot) is framed by amber corner brackets, as if a targeting reticle had locked onto it. Actions are chamfered plates. A faint fractal grain sits over everything so the dark never reads as flat digital black.\n\nDensity is moderate and calm: big condensed uppercase headlines, generous section padding (104px), and body copy in a humanist sans held to readable measures. The game's own vocabulary carries the colour story: the six rarity tiers appear only where the data is rarity data, so they keep the meaning they have in-game. The style bar is the official Arena Breakout Infinite site's tactical look, taken as style only, with no marks, logos, or game art.\n\nThe system rejects the generic dark-SaaS template: no glow halos, no emoji or icon tiles, no decorative chip rows, no gradient text.",
+    "keyCharacteristics": [
+      "Olive-black ground, bone text, amber as the sole interface accent.",
+      "Rarity colours reserved for result data.",
+      "Condensed uppercase display type over a humanist sans body; tracked condensed labels.",
+      "Chamfered actions, corner-bracketed evidence, hairline rules, faint grain.",
+      "Square geometry everywhere else; depth from tone, with one ambient shadow under the scanner panel."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Amber is the only interface accent. If something is interactive, emphasised, or a framing device, it is amber; nothing else gets a hue.", "section": "colors" },
+      { "name": "The Rarity Is Data Rule", "body": "Rarity colours appear only on result data (rarity tags, match confidence). A rarity hue on a button, border, or heading is a bug.", "section": "colors" },
+      { "name": "The Amber Ink Rule", "body": "Text on an amber fill is tinta, never #000 or white.", "section": "colors" },
+      { "name": "The Condensed Shouts, Barlow Speaks Rule", "body": "Uppercase belongs to Saira Condensed only. Barlow is always sentence case.", "section": "typography" },
+      { "name": "The Tabular Numbers Rule", "body": "Numerals that count or measure (steps, percentages, item sizes) use tabular figures.", "section": "typography" },
+      { "name": "The Rules Not Boxes Rule", "body": "Group with hairline rules and spacing. A filled, bordered container is reserved for the scanner panel, the warning callout, and code chips.", "section": "elevation" },
+      { "name": "The No Glow Rule", "body": "No glows, halos, or coloured shadows. Amber sits flat.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep amber the only interface hue: actions, emphasis, icons, brackets, focus.",
+      "Do frame real evidence (live demo, real screenshots) with amber corner brackets, 22px arms, 2px stroke, 7px outside.",
+      "Do give primary actions the 14px chamfer and Amber Ink labels.",
+      "Do divide content with 1px Steel Hairline rules instead of boxing it.",
+      "Do set display, titles and labels in uppercase Saira Condensed; body in sentence-case Barlow.",
+      "Do use the house ease (cubic-bezier(.16,1,.3,1)) for settling motion and short ease-out colour transitions (150-400ms).",
+      "Do show the final, readable state with all animation and transitions off under prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use rarity colours for anything but rarity or result data.",
+      "Don't round corners on surfaces, buttons or images; the status dot is the only round element.",
+      "Don't add glows, halos, coloured shadows, or gradient text.",
+      "Don't wrap features in cards or icon tiles; no emoji, no decorative chip rows.",
+      "Don't put game marks, logos or game art on the page; the tactical style is borrowed, not the brand.",
+      "Don't use corner brackets as generic decoration on text blocks; they mark evidence."
+    ]
+  }
+}

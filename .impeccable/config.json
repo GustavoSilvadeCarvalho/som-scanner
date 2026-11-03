@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-03T18:51:28.590Z",
+        "reason": "agent decision: throwaway decision-round skeleton sketch, not shipped"
+      },
+      {
+        "rule": "italic-serif-display",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-03T18:51:28.860Z",
+        "reason": "agent decision: throwaway decision-round skeleton sketch, not shipped"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-03T18:51:29.148Z",
+        "reason": "agent decision: throwaway decision-round skeleton sketch, not shipped"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-vu.html"
+        ],
+        "createdAt": "2026-11-03T18:51:29.400Z",
+        "reason": "agent decision: throwaway decision-round skeleton sketch, not shipped"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-03T19:05:08.210Z",
+        "reason": "finish reviewer adjudication: .recurso has 32px padding before its right rule on desktop (0 only at <=960px where no right border exists); .faq summary has 22px padding below the top rule"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-03T19:12:01.099Z",
+        "reason": "agent decision: throwaway decision-round sketch from an unchosen direction, not shipped"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-03T19:12:01.379Z",
+        "reason": "agent decision: throwaway decision-round sketch from an unchosen direction, not shipped"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "mono\",consolas,monospace",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-03T19:12:01.708Z",
+        "reason": "agent decision: system monospace stack used only for the filename code chip (SomScanner-Setup.exe), documented as code chips in DESIGN.md; no shipped display or body text uses it"
+      }
+    ]
+  }
+}

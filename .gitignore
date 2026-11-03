@@ -1,0 +1,9 @@
+# Arquivos de trabalho do Impeccable (não fazem parte do site)
+.impeccable/critique/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/build/
+.impeccable/live/
+.impeccable/hook.cache.json
+.impeccable/config.local.json
