@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Som Scanner · descubra a carga pelo som</title>
+<meta name="description" content="Programa gratuito para Windows que escuta o som da carga misteriosa do mercador e mostra quais itens podem estar dentro.">
+<link rel="icon" href="favicon.png">
+<style>
+  /* ====== CONFIGURE AQUI ====== */
+  /* O link do botão de download fica no <a id="baixar"> mais abaixo. */
+  :root{
+    --bg:#0f1115; --painel:#171a21; --card:#1f232c; --borda:#2f3542;
+    --texto:#e8eaf0; --fraco:#8b92a3; --laranja:#f5a524; --laranja2:#ffbf47;
+    --common:#b4b9c4; --uncommon:#58d36c; --rare:#4ea8ff; --epic:#b875ff; --legendary:#ffb534; --mythic:#ff5252;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--texto);font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;line-height:1.55}
+  a{color:var(--laranja2)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  header{border-bottom:1px solid var(--borda);background:var(--painel)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:34px;height:34px;border-radius:8px}
+  header b{font-size:18px;letter-spacing:.5px}
+  header span{color:var(--fraco);font-size:13px;margin-left:auto}
+
+  .hero{padding:72px 0 40px;text-align:center;background:radial-gradient(ellipse at 50% -10%,rgba(245,165,36,.16),transparent 60%)}
+  .hero img.logo{width:96px;height:96px;border-radius:22px;box-shadow:0 10px 40px rgba(245,165,36,.25)}
+  .hero h1{font-size:clamp(32px,6vw,54px);line-height:1.1;margin:22px 0 14px}
+  .hero h1 em{font-style:normal;color:var(--laranja)}
+  .hero p.sub{color:var(--fraco);font-size:clamp(16px,2.2vw,19px);max-width:640px;margin:0 auto}
+  .cta{margin:34px 0 10px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--laranja);color:#16120a;text-decoration:none;
+       font-weight:700;font-size:19px;padding:17px 34px;border-radius:12px;transition:.15s;box-shadow:0 8px 28px rgba(245,165,36,.3)}
+  .btn:hover{background:var(--laranja2);transform:translateY(-2px)}
+  .btn svg{width:22px;height:22px}
+  .cta small{color:var(--fraco);font-size:13px}
+  .rar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .rar span{font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:var(--card)}
+
+  .print{margin:30px auto 0;max-width:980px;border-radius:14px;overflow:hidden;border:1px solid var(--borda);
+         box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  .print img{display:block;width:100%;height:auto}
+
+  section{padding:64px 0}
+  h2{font-size:28px;margin-bottom:8px}
+  h2+p{color:var(--fraco);margin-bottom:30px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--borda);border-radius:14px;padding:22px}
+  .card .ic{font-size:26px;margin-bottom:10px}
+  .card h3{font-size:17px;margin-bottom:6px}
+  .card p{color:var(--fraco);font-size:15px}
+  .passos{counter-reset:p;display:grid;gap:14px}
+  .passo{display:flex;gap:16px;align-items:flex-start;background:var(--painel);border:1px solid var(--borda);border-radius:12px;padding:18px}
+  .passo::before{counter-increment:p;content:counter(p);flex:0 0 36px;height:36px;border-radius:50%;background:var(--laranja);
+                 color:#16120a;font-weight:800;display:grid;place-items:center}
+  .passo b{display:block;margin-bottom:2px}
+  .passo span{color:var(--fraco);font-size:15px}
+  .aviso{background:#2a2416;border:1px solid #5a4716;border-radius:12px;padding:16px 18px;color:#f1d79a;font-size:15px;margin-top:18px}
+  details{background:var(--painel);border:1px solid var(--borda);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--fraco);margin-top:8px;font-size:15px}
+  header b{white-space:nowrap}
+  @media (max-width:560px){header span{display:none}}
+  footer{border-top:1px solid var(--borda);padding:28px 0;color:var(--fraco);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <img src="icone.png" alt="">
+  <b>SOM SCANNER</b>
+  <span>para Arena Breakout Infinite</span>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <img class="logo" src="icone.png" alt="Som Scanner">
+  <h1>Descubra o que tem na carga<br><em>só pelo som</em></h1>
+  <p class="sub">Arraste a carga misteriosa do mercador e o Som Scanner escuta o som,
+     reconhece o grupo e mostra na hora quais itens podem estar dentro, do mais raro ao mais comum.</p>
+
+  <div class="cta">
+    <!-- TROQUE o href pelo link do seu instalador (veja COMO-PUBLICAR.txt) -->
+    <a id="baixar" class="btn" href="SomScanner-Setup.exe" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+      Baixar para Windows
+    </a>
+    <small>Grátis · Windows 10/11 (64 bits) · versão 1.0.0</small>
+  </div>
+
+  <div class="rar">
+    <span style="color:var(--common)">◆ Common</span>
+    <span style="color:var(--uncommon)">◆ Uncommon</span>
+    <span style="color:var(--rare)">◆ Rare</span>
+    <span style="color:var(--epic)">◆ Epic</span>
+    <span style="color:var(--legendary)">◆ Legendary</span>
+    <span style="color:var(--mythic)">◆ Mythic</span>
+  </div>
+
+  <div class="print"><img src="print.jpg" alt="Tela do Som Scanner reconhecendo um som" loading="lazy"></div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>O que ele faz</h2>
+  <p>Sem ficar testando som por som num site: ele faz a comparação sozinho.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🎧</div><h3>Reconhece na hora</h3>
+      <p>Escuta o áudio do PC e, assim que você arrasta a carga, mostra o palpite em menos de um segundo.</p></div>
+    <div class="card"><div class="ic">◆</div><h3>Itens e raridades</h3>
+      <p>Lista todos os itens possíveis com tamanho, raridade colorida, categoria e em quais cargas aparecem.</p></div>
+    <div class="card"><div class="ic">🎯</div><h3>Filtros do jogo</h3>
+      <p>Escolha o tamanho (1x1 a 3x2) e o tipo de carga para ver só o que realmente pode vir.</p></div>
+    <div class="card"><div class="ic">🧠</div><h3>Aprende com você</h3>
+      <p>Errou? Clique em "Errou, era outro" e mostre o certo. Da próxima vez ele acerta.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Como usar</h2>
+  <p>Leva um minuto.</p>
+  <div class="passos">
+    <div class="passo"><div><b>Baixe e instale</b><span>Abra o <code>SomScanner-Setup.exe</code> e siga o instalador. Não precisa de mais nada.</span></div></div>
+    <div class="passo"><div><b>Clique em "Iniciar escuta"</b><span>Deixe o programa aberto. Marque "Sempre no topo" se quiser ele por cima do jogo.</span></div></div>
+    <div class="passo"><div><b>Arraste a carga no mercador</b><span>O palpite aparece na hora com os itens possíveis. Se quiser, filtre pelo tamanho e tipo da carga.</span></div></div>
+  </div>
+  <div class="aviso">⚠ Como o programa é novo, o Windows pode mostrar "O Windows protegeu o computador".
+    Clique em <b>Mais informações</b> → <b>Executar assim mesmo</b>.</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Perguntas</h2>
+  <p>As dúvidas mais comuns.</p>
+  <details><summary>Isso mexe no jogo?</summary>
+    <p>Não. Ele só escuta o áudio que já sai no seu PC, como se você tivesse decorado os sons. Não lê nem altera nada do jogo.
+       Mesmo assim, o uso é por sua conta: confira os termos do jogo.</p></details>
+  <details><summary>Ele não reconheceu o som, e agora?</summary>
+    <p>Aumente a Sensibilidade e confira os filtros. Se ele chutou errado, use o botão "Errou, era outro" para ensinar o som certo.</p></details>
+  <details><summary>Funciona com fone?</summary>
+    <p>Sim. Ele capta o áudio do dispositivo de saída padrão do Windows (fone ou caixa de som).</p></details>
+  <details><summary>Como desinstalar?</summary>
+    <p>Configurações do Windows → Aplicativos → Som Scanner → Desinstalar.</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  Som Scanner é um projeto independente de fã, sem afiliação com a desenvolvedora ou a distribuidora de Arena Breakout Infinite.
+  Todas as marcas pertencem aos seus donos. O programa não inclui arquivos do jogo.
+</div></footer>
+
+</body>
+</html>
