@@ -45,9 +45,9 @@ The program runs next to the game, optionally always on top. Flow: install with 
 
 ## Evidence on Hand
 
-- `print.jpg`: a screenshot of the program recognizing a sound.
+- `print-recorte.png`: a screenshot of the program (v1.1.0) recognizing a sound.
 - `icone.png`, `favicon.png`.
-- Version 1.0.0.
+- Version 1.1.0 (latest GitHub release, 2026-11-03).
 - No testimonials, download counts, videos, or accuracy metrics exist. Do not make them up.
 
 ## Product Principles

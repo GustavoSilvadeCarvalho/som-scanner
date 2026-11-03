@@ -7,7 +7,7 @@ related_targets: []
 
 # Surface: download landing page (index.html)
 
-Mode: Persuade. Visitor: Arena Breakout Infinite player (casual or experienced) arriving from Discord, a video, or a recommendation. Action: download the Windows installer. Proof: the real app screenshot (print.jpg) and a demonstration built from its data (Item_Container_Big_Metal_Up, Fuel tank / High Energy Fuel Legendary, Oil Drum / Portable Fuel Canister / Propane Tank Epic). Constraints: static single file, PT copy preserved in this pass (clarify, adapt/i18n, harden follow as separate passes), fan disclaimer kept.
+Mode: Persuade. Visitor: Arena Breakout Infinite player (casual or experienced) arriving from Discord, a video, or a recommendation. Action: download the Windows installer. Proof: the real app screenshot (print-recorte.png) and a demonstration built from its data (Item_Container_Big_Metal_Up, Fuel tank / High Energy Fuel Legendary, Oil Drum / Portable Fuel Canister / Propane Tank Epic). Constraints: static single file, PT copy preserved in this pass (clarify, adapt/i18n, harden follow as separate passes), fan disclaimer kept.
 
 Chosen: the category standard (canon), chosen by the user on purpose. Quality bar: the official Arena Breakout Infinite site's tactical style, in style only, with no marks, logos, or game art.
 
