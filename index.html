@@ -55,8 +55,34 @@
   .marca img{width:32px;height:32px;flex:none}
   .marca b{display:block;font:700 19px/1 var(--display);letter-spacing:.12em;white-space:nowrap}
   .marca span{display:block;margin-top:4px;font:600 12px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--fraco)}
-  .idioma{margin-left:auto;display:flex;border:1px solid var(--linha2)}
-  html:not(.js) .idioma{display:none}
+  .topo-acoes{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .idioma{display:flex;border:1px solid var(--linha2)}
+  html:not(.js) .idioma,html:not(.js) .apoiar{display:none}
+  .apoiar{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;background:none;border:1px solid var(--ambar);color:var(--ambar2);cursor:pointer;
+    font:700 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;transition:background-color .15s,color .15s}
+  .apoiar svg{width:16px;height:16px;flex:none}
+  .apoiar:hover{background:var(--ambar);color:var(--tinta)}
+  .so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+  /* doação Pix */
+  .pix{margin:auto;width:min(400px,calc(100% - 40px));overflow:visible;background:var(--painel);color:var(--osso);border:1px solid var(--linha2);padding:30px 28px 24px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+  .pix::backdrop{background:rgba(5,6,4,.78)}
+  .pix[open]{animation:surgir .3s var(--assenta)}
+  @keyframes surgir{from{opacity:0;transform:translateY(10px)}}
+  .pix h2{font-size:30px;padding-right:36px}
+  .pix>p{color:var(--fraco);font-size:16px;margin-top:10px}
+  .pix .fechar{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;background:none;border:0;color:var(--fraco);cursor:pointer}
+  .pix .fechar:hover{color:var(--osso)}
+  .pix .fechar svg{width:20px;height:20px}
+  .qr{width:216px;margin:22px auto 0;background:#fff;padding:10px}
+  .qr svg{display:block;width:100%;height:auto}
+  .pix .dica{text-align:center;font-size:14px;margin-top:10px}
+  .pix .btn{width:100%;margin-top:18px;font-size:19px;padding:17px 20px}
+  .pix .chave{margin-top:14px;font-size:14px;color:var(--fraco);text-align:center}
+  .pix .chave code{display:block;width:max-content;max-width:100%;margin:6px auto 2px;font-size:12px}
+  .pix .link{background:none;border:0;color:var(--ambar2);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
+  .pix .copiado{margin-top:8px;text-align:center;font-size:15px;color:var(--uncommon);min-height:1.6em}
   .idioma button{font:700 14px/1 var(--display);letter-spacing:.12em;color:var(--fraco);background:none;border:0;min-width:46px;min-height:40px;cursor:pointer;transition:color .15s,background-color .15s}
   .idioma button+button{border-left:1px solid var(--linha2)}
   .idioma button:hover{color:var(--osso)}
@@ -198,6 +224,9 @@
   @media (max-width:560px){
     .wrap{padding:0 20px}
     .marca b{font-size:17px}
+    .apoiar{padding:0 12px}
+    .apoiar .rotulo{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+    .topo-acoes{gap:8px}
     .btn{width:100%}
     .fim .cta{width:100%}
     .no-pc .acoes>*{flex:1 1 100%}
@@ -221,9 +250,12 @@
     <img src="icone.png" alt="" width="32" height="32">
     <div><b>SOM SCANNER</b><span data-i18n="jogo">para Arena Breakout Infinite</span></div>
   </div>
+  <div class="topo-acoes">
+  <button type="button" class="apoiar" id="abrir-pix" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10C19.5 15.4 12 20 12 20z"/></svg><span class="rotulo" data-i18n="apoiar">Apoiar</span></button>
   <div class="idioma" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="pt" aria-pressed="true" lang="pt-BR" title="Português">PT</button>
     <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+  </div>
   </div>
 </div></header>
 
@@ -370,6 +402,17 @@
 </div></div>
 </main>
 
+<dialog class="pix cantos" id="pix" aria-labelledby="pix-titulo">
+  <button type="button" class="fechar" id="fechar-pix"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg><span class="so-leitor" data-i18n="fechar">Fechar</span></button>
+  <h2 id="pix-titulo" data-i18n="pixTitulo">Apoie o Som Scanner</h2>
+  <p data-i18n="pixTexto">O Som Scanner é grátis. Se ele te ajudou e você quiser apoiar, qualquer valor no Pix ajuda. É totalmente opcional.</p>
+  <div class="qr"><svg viewBox="-4 -4 57 57" shape-rendering="crispEdges" role="img" aria-label="QR Code do Pix"><rect x="-4" y="-4" width="57" height="57" fill="#fff"/><path fill="#0d0e0b" d="M0 0h7v1h-7zM9 0h4v1h-4zM14 0h2v1h-2zM17 0h1v1h-1zM20 0h1v1h-1zM27 0h1v1h-1zM30 0h1v1h-1zM32 0h2v1h-2zM36 0h1v1h-1zM40 0h1v1h-1zM42 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM17 1h1v1h-1zM20 1h7v1h-7zM32 1h1v1h-1zM34 1h1v1h-1zM36 1h1v1h-1zM38 1h3v1h-3zM42 1h1v1h-1zM48 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM11 2h3v1h-3zM15 2h1v1h-1zM17 2h3v1h-3zM21 2h1v1h-1zM24 2h1v1h-1zM26 2h3v1h-3zM30 2h1v1h-1zM32 2h2v1h-2zM35 2h1v1h-1zM39 2h2v1h-2zM42 2h1v1h-1zM44 2h3v1h-3zM48 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h2v1h-2zM11 3h1v1h-1zM13 3h1v1h-1zM16 3h1v1h-1zM19 3h1v1h-1zM21 3h1v1h-1zM24 3h1v1h-1zM31 3h1v1h-1zM33 3h4v1h-4zM39 3h1v1h-1zM42 3h1v1h-1zM44 3h3v1h-3zM48 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h4v1h-4zM15 4h2v1h-2zM22 4h6v1h-6zM29 4h5v1h-5zM35 4h1v1h-1zM37 4h1v1h-1zM42 4h1v1h-1zM44 4h3v1h-3zM48 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM14 5h3v1h-3zM18 5h2v1h-2zM22 5h1v1h-1zM26 5h1v1h-1zM33 5h2v1h-2zM36 5h3v1h-3zM42 5h1v1h-1zM48 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM32 6h1v1h-1zM34 6h1v1h-1zM36 6h1v1h-1zM38 6h1v1h-1zM40 6h1v1h-1zM42 6h7v1h-7zM8 7h1v1h-1zM11 7h2v1h-2zM14 7h2v1h-2zM17 7h1v1h-1zM22 7h1v1h-1zM26 7h5v1h-5zM32 7h4v1h-4zM37 7h1v1h-1zM39 7h2v1h-2zM0 8h1v1h-1zM2 8h5v1h-5zM9 8h1v1h-1zM11 8h1v1h-1zM19 8h8v1h-8zM31 8h1v1h-1zM33 8h1v1h-1zM36 8h1v1h-1zM38 8h1v1h-1zM40 8h1v1h-1zM42 8h5v1h-5zM2 9h3v1h-3zM8 9h1v1h-1zM10 9h2v1h-2zM16 9h1v1h-1zM21 9h1v1h-1zM27 9h1v1h-1zM29 9h2v1h-2zM33 9h1v1h-1zM35 9h1v1h-1zM41 9h2v1h-2zM45 9h1v1h-1zM47 9h1v1h-1zM3 10h2v1h-2zM6 10h1v1h-1zM8 10h3v1h-3zM16 10h1v1h-1zM18 10h5v1h-5zM24 10h5v1h-5zM32 10h1v1h-1zM34 10h1v1h-1zM36 10h4v1h-4zM43 10h1v1h-1zM45 10h1v1h-1zM48 10h1v1h-1zM8 11h1v1h-1zM11 11h2v1h-2zM14 11h4v1h-4zM19 11h2v1h-2zM23 11h1v1h-1zM25 11h1v1h-1zM28 11h1v1h-1zM32 11h1v1h-1zM35 11h1v1h-1zM38 11h1v1h-1zM42 11h1v1h-1zM44 11h2v1h-2zM0 12h1v1h-1zM3 12h1v1h-1zM6 12h2v1h-2zM9 12h3v1h-3zM13 12h1v1h-1zM15 12h3v1h-3zM22 12h3v1h-3zM29 12h3v1h-3zM33 12h1v1h-1zM35 12h5v1h-5zM41 12h3v1h-3zM45 12h1v1h-1zM48 12h1v1h-1zM3 13h1v1h-1zM7 13h1v1h-1zM11 13h3v1h-3zM15 13h2v1h-2zM19 13h2v1h-2zM22 13h3v1h-3zM29 13h2v1h-2zM32 13h1v1h-1zM38 13h1v1h-1zM40 13h1v1h-1zM42 13h2v1h-2zM45 13h1v1h-1zM47 13h1v1h-1zM1 14h1v1h-1zM3 14h2v1h-2zM6 14h2v1h-2zM9 14h1v1h-1zM13 14h2v1h-2zM20 14h3v1h-3zM24 14h5v1h-5zM31 14h4v1h-4zM36 14h1v1h-1zM39 14h1v1h-1zM41 14h1v1h-1zM44 14h1v1h-1zM48 14h1v1h-1zM0 15h2v1h-2zM3 15h3v1h-3zM7 15h2v1h-2zM10 15h2v1h-2zM14 15h7v1h-7zM22 15h4v1h-4zM28 15h1v1h-1zM32 15h1v1h-1zM35 15h1v1h-1zM37 15h1v1h-1zM39 15h1v1h-1zM41 15h5v1h-5zM48 15h1v1h-1zM0 16h7v1h-7zM9 16h1v1h-1zM11 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM20 16h2v1h-2zM23 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM34 16h1v1h-1zM36 16h2v1h-2zM39 16h4v1h-4zM46 16h1v1h-1zM48 16h1v1h-1zM0 17h1v1h-1zM2 17h2v1h-2zM5 17h1v1h-1zM10 17h4v1h-4zM18 17h2v1h-2zM24 17h1v1h-1zM27 17h1v1h-1zM30 17h4v1h-4zM37 17h1v1h-1zM41 17h2v1h-2zM45 17h1v1h-1zM47 17h1v1h-1zM0 18h2v1h-2zM3 18h2v1h-2zM6 18h1v1h-1zM11 18h1v1h-1zM14 18h2v1h-2zM18 18h1v1h-1zM21 18h2v1h-2zM24 18h1v1h-1zM26 18h2v1h-2zM34 18h1v1h-1zM36 18h1v1h-1zM38 18h2v1h-2zM44 18h2v1h-2zM48 18h1v1h-1zM0 19h2v1h-2zM4 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM15 19h4v1h-4zM20 19h1v1h-1zM23 19h1v1h-1zM27 19h2v1h-2zM30 19h2v1h-2zM34 19h2v1h-2zM43 19h3v1h-3zM48 19h1v1h-1zM0 20h1v1h-1zM3 20h2v1h-2zM6 20h3v1h-3zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM21 20h2v1h-2zM24 20h1v1h-1zM26 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM33 20h4v1h-4zM40 20h1v1h-1zM42 20h1v1h-1zM46 20h1v1h-1zM48 20h1v1h-1zM1 21h4v1h-4zM8 21h2v1h-2zM11 21h1v1h-1zM14 21h2v1h-2zM17 21h2v1h-2zM21 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM29 21h2v1h-2zM35 21h2v1h-2zM39 21h1v1h-1zM42 21h1v1h-1zM45 21h2v1h-2zM48 21h1v1h-1zM1 22h1v1h-1zM3 22h6v1h-6zM10 22h1v1h-1zM12 22h3v1h-3zM16 22h3v1h-3zM22 22h6v1h-6zM33 22h6v1h-6zM40 22h5v1h-5zM47 22h2v1h-2zM2 23h1v1h-1zM4 23h1v1h-1zM8 23h3v1h-3zM14 23h1v1h-1zM17 23h1v1h-1zM22 23h1v1h-1zM26 23h1v1h-1zM28 23h5v1h-5zM35 23h1v1h-1zM38 23h3v1h-3zM44 23h2v1h-2zM1 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM19 24h4v1h-4zM24 24h1v1h-1zM26 24h2v1h-2zM29 24h2v1h-2zM33 24h2v1h-2zM36 24h1v1h-1zM40 24h1v1h-1zM42 24h1v1h-1zM44 24h4v1h-4zM0 25h1v1h-1zM3 25h2v1h-2zM8 25h2v1h-2zM14 25h1v1h-1zM16 25h1v1h-1zM21 25h2v1h-2zM26 25h3v1h-3zM30 25h1v1h-1zM32 25h2v1h-2zM36 25h2v1h-2zM39 25h2v1h-2zM44 25h1v1h-1zM47 25h1v1h-1zM0 26h2v1h-2zM4 26h8v1h-8zM13 26h2v1h-2zM19 26h1v1h-1zM21 26h7v1h-7zM29 26h1v1h-1zM31 26h1v1h-1zM33 26h2v1h-2zM38 26h1v1h-1zM40 26h7v1h-7zM48 26h1v1h-1zM2 27h1v1h-1zM4 27h2v1h-2zM7 27h2v1h-2zM10 27h1v1h-1zM12 27h5v1h-5zM18 27h2v1h-2zM21 27h1v1h-1zM24 27h6v1h-6zM32 27h2v1h-2zM37 27h2v1h-2zM40 27h1v1h-1zM42 27h1v1h-1zM48 27h1v1h-1zM1 28h1v1h-1zM3 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM12 28h2v1h-2zM15 28h1v1h-1zM19 28h1v1h-1zM22 28h1v1h-1zM24 28h1v1h-1zM30 28h1v1h-1zM35 28h6v1h-6zM42 28h1v1h-1zM44 28h5v1h-5zM0 29h1v1h-1zM3 29h3v1h-3zM9 29h1v1h-1zM11 29h1v1h-1zM14 29h5v1h-5zM21 29h1v1h-1zM23 29h2v1h-2zM27 29h1v1h-1zM29 29h2v1h-2zM32 29h1v1h-1zM36 29h1v1h-1zM39 29h1v1h-1zM41 29h3v1h-3zM45 29h1v1h-1zM47 29h1v1h-1zM1 30h1v1h-1zM3 30h1v1h-1zM6 30h2v1h-2zM10 30h1v1h-1zM12 30h8v1h-8zM22 30h1v1h-1zM27 30h1v1h-1zM29 30h1v1h-1zM31 30h1v1h-1zM34 30h4v1h-4zM39 30h4v1h-4zM44 30h2v1h-2zM48 30h1v1h-1zM0 31h1v1h-1zM3 31h2v1h-2zM8 31h3v1h-3zM12 31h1v1h-1zM16 31h1v1h-1zM21 31h1v1h-1zM23 31h4v1h-4zM28 31h1v1h-1zM31 31h3v1h-3zM35 31h1v1h-1zM39 31h1v1h-1zM43 31h2v1h-2zM48 31h1v1h-1zM2 32h2v1h-2zM5 32h3v1h-3zM10 32h1v1h-1zM12 32h1v1h-1zM15 32h4v1h-4zM20 32h2v1h-2zM27 32h1v1h-1zM33 32h1v1h-1zM36 32h1v1h-1zM38 32h3v1h-3zM42 32h2v1h-2zM45 32h1v1h-1zM47 32h2v1h-2zM1 33h2v1h-2zM8 33h2v1h-2zM14 33h1v1h-1zM19 33h1v1h-1zM21 33h5v1h-5zM28 33h1v1h-1zM30 33h1v1h-1zM33 33h1v1h-1zM37 33h1v1h-1zM44 33h2v1h-2zM47 33h1v1h-1zM0 34h5v1h-5zM6 34h1v1h-1zM9 34h1v1h-1zM12 34h1v1h-1zM14 34h1v1h-1zM17 34h1v1h-1zM21 34h1v1h-1zM23 34h1v1h-1zM25 34h1v1h-1zM27 34h1v1h-1zM29 34h1v1h-1zM34 34h3v1h-3zM38 34h3v1h-3zM42 34h1v1h-1zM45 34h1v1h-1zM48 34h1v1h-1zM0 35h1v1h-1zM5 35h1v1h-1zM7 35h1v1h-1zM9 35h1v1h-1zM12 35h2v1h-2zM18 35h5v1h-5zM24 35h1v1h-1zM26 35h3v1h-3zM30 35h1v1h-1zM32 35h1v1h-1zM35 35h1v1h-1zM41 35h1v1h-1zM44 35h2v1h-2zM1 36h1v1h-1zM3 36h2v1h-2zM6 36h6v1h-6zM13 36h1v1h-1zM15 36h3v1h-3zM27 36h1v1h-1zM34 36h3v1h-3zM39 36h6v1h-6zM46 36h3v1h-3zM0 37h1v1h-1zM8 37h2v1h-2zM14 37h1v1h-1zM16 37h1v1h-1zM18 37h1v1h-1zM21 37h1v1h-1zM24 37h1v1h-1zM30 37h3v1h-3zM35 37h2v1h-2zM39 37h2v1h-2zM42 37h1v1h-1zM46 37h1v1h-1zM48 37h1v1h-1zM1 38h1v1h-1zM5 38h2v1h-2zM8 38h1v1h-1zM11 38h2v1h-2zM16 38h1v1h-1zM18 38h1v1h-1zM22 38h2v1h-2zM25 38h1v1h-1zM27 38h1v1h-1zM31 38h4v1h-4zM37 38h2v1h-2zM40 38h1v1h-1zM42 38h3v1h-3zM48 38h1v1h-1zM1 39h3v1h-3zM7 39h2v1h-2zM11 39h1v1h-1zM17 39h2v1h-2zM21 39h1v1h-1zM24 39h1v1h-1zM27 39h2v1h-2zM30 39h1v1h-1zM32 39h1v1h-1zM34 39h2v1h-2zM48 39h1v1h-1zM0 40h3v1h-3zM6 40h4v1h-4zM15 40h1v1h-1zM17 40h10v1h-10zM31 40h1v1h-1zM36 40h2v1h-2zM39 40h8v1h-8zM48 40h1v1h-1zM8 41h1v1h-1zM12 41h2v1h-2zM15 41h1v1h-1zM17 41h2v1h-2zM21 41h2v1h-2zM26 41h1v1h-1zM28 41h3v1h-3zM33 41h1v1h-1zM35 41h2v1h-2zM39 41h2v1h-2zM44 41h1v1h-1zM47 41h1v1h-1zM0 42h7v1h-7zM12 42h3v1h-3zM17 42h2v1h-2zM21 42h2v1h-2zM24 42h1v1h-1zM26 42h2v1h-2zM34 42h2v1h-2zM38 42h1v1h-1zM40 42h1v1h-1zM42 42h1v1h-1zM44 42h1v1h-1zM46 42h1v1h-1zM48 42h1v1h-1zM0 43h1v1h-1zM6 43h1v1h-1zM8 43h3v1h-3zM13 43h1v1h-1zM17 43h3v1h-3zM22 43h1v1h-1zM26 43h1v1h-1zM28 43h5v1h-5zM35 43h1v1h-1zM37 43h1v1h-1zM40 43h1v1h-1zM44 43h1v1h-1zM47 43h1v1h-1zM0 44h1v1h-1zM2 44h3v1h-3zM6 44h1v1h-1zM8 44h3v1h-3zM12 44h1v1h-1zM14 44h1v1h-1zM16 44h1v1h-1zM21 44h6v1h-6zM31 44h1v1h-1zM33 44h2v1h-2zM36 44h1v1h-1zM39 44h7v1h-7zM48 44h1v1h-1zM0 45h1v1h-1zM2 45h3v1h-3zM6 45h1v1h-1zM8 45h1v1h-1zM11 45h2v1h-2zM15 45h1v1h-1zM17 45h5v1h-5zM23 45h1v1h-1zM27 45h6v1h-6zM35 45h2v1h-2zM39 45h3v1h-3zM43 45h4v1h-4zM48 45h1v1h-1zM0 46h1v1h-1zM2 46h3v1h-3zM6 46h1v1h-1zM8 46h1v1h-1zM13 46h2v1h-2zM18 46h1v1h-1zM20 46h2v1h-2zM24 46h2v1h-2zM28 46h1v1h-1zM31 46h4v1h-4zM36 46h3v1h-3zM42 46h1v1h-1zM47 46h2v1h-2zM0 47h1v1h-1zM6 47h1v1h-1zM9 47h1v1h-1zM11 47h2v1h-2zM14 47h2v1h-2zM18 47h3v1h-3zM23 47h3v1h-3zM28 47h5v1h-5zM35 47h1v1h-1zM44 47h1v1h-1zM48 47h1v1h-1zM0 48h7v1h-7zM8 48h2v1h-2zM11 48h2v1h-2zM17 48h2v1h-2zM20 48h1v1h-1zM24 48h1v1h-1zM27 48h1v1h-1zM36 48h2v1h-2zM39 48h3v1h-3zM45 48h4v1h-4z"/></svg></div>
+  <p class="dica" data-i18n="pixDica">No app do banco: Pix → Ler QR Code.</p>
+  <button type="button" class="btn js-copiar-pix" autofocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><path d="M9 9h11v11H9z"/><path d="M5 15H4V4h11v1"/></svg><span data-i18n="pixCopiar">Copiar código Pix</span></button>
+  <p class="chave"><span data-i18n="pixChave">Chave aleatória:</span> <code>fbd53429-c85d-4f8a-8386-0f8fe2cb8d1c</code> <button type="button" class="link js-copiar-chave" data-i18n="pixCopiarChave">copiar chave</button></p>
+  <p class="copiado" role="status" aria-live="polite"></p>
+</dialog>
+
 <footer><div class="wrap"><p data-i18n="rodape">
   Som Scanner é um projeto independente de fã, sem afiliação com a desenvolvedora ou a distribuidora de Arena Breakout Infinite.
   Todas as marcas pertencem aos seus donos. O programa não inclui arquivos do jogo.
@@ -384,7 +427,9 @@
 
   /* ---------- idioma ---------- */
   var EN={
-    jogo:'for Arena Breakout Infinite',
+    jogo:'for Arena Breakout Infinite', apoiar:'Support', fechar:'Close',
+    pixTitulo:'Support Som Scanner', pixTexto:'Som Scanner is free. If it helped you and you’d like to chip in, any amount via Pix (Brazil’s instant payment) helps. It’s completely optional.',
+    pixDica:'In your bank app: Pix → Scan QR code.', pixCopiar:'Copy Pix code', pixChave:'Random key:', pixCopiarChave:'copy key',
     titulo:'Know what’s in the cargo <em>just by the sound</em>',
     sub:'Drag the merchant’s mystery cargo. Som Scanner listens to the sound it makes, works out which one it is and instantly shows the items that could be inside, rarest first.',
     baixar:'Download for Windows', gratis:'Free', versao:'version',
@@ -414,9 +459,9 @@
     rodape:'Som Scanner is an independent fan project with no affiliation with the developer or publisher of Arena Breakout Infinite. All trademarks belong to their owners. The app includes no game files.'
   };
   var TXT={
-    pt:{ouvindo:'Escutando',reconhecido:'Reconhecido',copiado:'Link copiado. Agora é só abrir no PC.',erroCopia:'Não deu para copiar. Copie o endereço da barra do navegador.',
+    pt:{pixCopiado:'Código Pix copiado. Cole no app do banco em Pix Copia e Cola.',chaveCopiada:'Chave copiada. Cole no app do banco em Pagar com chave.',ouvindo:'Escutando',reconhecido:'Reconhecido',copiado:'Link copiado. Agora é só abrir no PC.',erroCopia:'Não deu para copiar. Copie o endereço da barra do navegador.',
         title:'Som Scanner · descubra a carga pelo som',desc:'Programa gratuito para Windows que escuta o som da carga misteriosa do mercador e mostra quais itens podem estar dentro.',html:'pt-BR'},
-    en:{ouvindo:'Listening',reconhecido:'Recognized',copiado:'Link copied. Now open it on your PC.',erroCopia:'Couldn’t copy. Copy the address from your browser bar.',
+    en:{pixCopiado:'Pix code copied. Paste it in your bank app under Pix Copia e Cola.',chaveCopiada:'Key copied. Paste it in your bank app under Pay with key.',ouvindo:'Listening',reconhecido:'Recognized',copiado:'Link copied. Now open it on your PC.',erroCopia:'Couldn’t copy. Copy the address from your browser bar.',
         title:'Som Scanner · know the cargo by its sound',desc:'Free Windows app that listens to the merchant’s mystery cargo sound and shows which items could be inside.',html:'en'}
   };
   var PT={}, PTA={};
@@ -488,6 +533,27 @@
       }
     });
   });
+
+  /* ---------- doação Pix ---------- */
+  var PIX='00020126580014br.gov.bcb.pix0136fbd53429-c85d-4f8a-8386-0f8fe2cb8d1c5204000053039865802BR5925Gustavo Silva de Carvalho6010Indaiatuba62070503***630421FB', CHAVE='fbd53429-c85d-4f8a-8386-0f8fe2cb8d1c';
+  var dlg=document.getElementById('pix'), abrir=document.getElementById('abrir-pix');
+  function copiarTexto(texto,el,msg){
+    function ok(){el.textContent=t(msg);}
+    function falha(){el.textContent=t('erroCopia');}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(ok,falha);return;}
+    var ta=document.createElement('textarea'); ta.value=texto; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+    dlg.appendChild(ta); ta.select(); var feito=false; try{feito=document.execCommand('copy');}catch(e){} dlg.removeChild(ta);
+    feito?ok():falha();
+  }
+  if(dlg&&typeof dlg.showModal==='function'){
+    var aviso=dlg.querySelector('.copiado');
+    abrir.addEventListener('click',function(){aviso.textContent=''; dlg.showModal();});
+    document.getElementById('fechar-pix').addEventListener('click',function(){dlg.close();});
+    dlg.addEventListener('click',function(e){if(e.target===dlg) dlg.close();});
+    dlg.addEventListener('close',function(){abrir.focus();});
+    dlg.querySelector('.js-copiar-pix').addEventListener('click',function(){copiarTexto(PIX,aviso,'pixCopiado');});
+    dlg.querySelector('.js-copiar-chave').addEventListener('click',function(){copiarTexto(CHAVE,aviso,'chaveCopiada');});
+  } else if(abrir){ abrir.hidden=true; }
 
   /* ---------- painel do scanner ---------- */
   if(!scan) return;
