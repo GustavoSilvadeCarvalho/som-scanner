@@ -24,7 +24,6 @@
   @font-face{font-family:"Saira Condensed";src:url(fonts/saira-condensed-700.woff2) format("woff2");font-weight:700;font-display:swap}
   @font-face{font-family:"Saira Condensed";src:url(fonts/saira-condensed-800.woff2) format("woff2");font-weight:800;font-display:swap}
   @font-face{font-family:"Barlow";src:url(fonts/barlow-400.woff2) format("woff2");font-weight:400;font-display:swap}
-  @font-face{font-family:"Barlow";src:url(fonts/barlow-500.woff2) format("woff2");font-weight:500;font-display:swap}
   @font-face{font-family:"Barlow";src:url(fonts/barlow-600.woff2) format("woff2");font-weight:600;font-display:swap}
 
   :root{
@@ -108,13 +107,19 @@
       linear-gradient(var(--ambar),var(--ambar)) 100% 0/22px 2px no-repeat,linear-gradient(var(--ambar),var(--ambar)) 100% 0/2px 22px no-repeat,
       linear-gradient(var(--ambar),var(--ambar)) 0 100%/22px 2px no-repeat,linear-gradient(var(--ambar),var(--ambar)) 0 100%/2px 22px no-repeat,
       linear-gradient(var(--ambar),var(--ambar)) 100% 100%/22px 2px no-repeat,linear-gradient(var(--ambar),var(--ambar)) 100% 100%/2px 22px no-repeat}
-  .scan-top{min-height:26px;display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 13px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--fraco)}
+  .scan-top{min-height:32px;display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 13px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--fraco)}
   .estado{display:inline-flex;align-items:center;gap:8px;color:var(--osso);white-space:nowrap}
   .estado i{width:8px;height:8px;border-radius:50%;background:var(--ambar)}
   .scan.ouvindo .estado i{animation:pisca 1s steps(2,jump-none) infinite}
   @keyframes pisca{50%{opacity:.25}}
-  .de-novo{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ambar2);background:none;border:0;cursor:pointer;padding:4px 0;margin-right:auto;text-decoration:underline;text-underline-offset:4px}
-  .de-novo:hover{color:var(--osso)}
+  .ouvir-som{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ambar2);background:none;border:1px solid var(--linha2);cursor:pointer;padding:6px 10px;margin-right:auto;transition:color .15s,border-color .15s,background-color .15s}
+  .ouvir-som svg{width:14px;height:14px;flex:none}
+  .ouvir-som:hover{color:var(--osso);border-color:var(--ambar)}
+  .ouvir-som[aria-pressed="true"]{background:var(--ambar);border-color:var(--ambar);color:var(--tinta)}
+  .tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;transition:opacity .35s ease-out}
+  .tags li{font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border:1px solid currentColor}
+  .scan.ouvindo .tags{opacity:.18}
+  .itens li.mais{display:block;color:var(--fraco);font-size:15px;border-bottom:0;padding-top:12px}
   .onda{display:flex;align-items:center;gap:3px;height:72px;margin:18px 0 16px;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
   .onda span{flex:1;height:calc(var(--h) * 100%);background:var(--ambar);transform-origin:center;
     transition:transform .5s var(--assenta),background-color .25s ease-out;transition-delay:0s,calc(var(--k,0) * 14ms)}
@@ -131,7 +136,7 @@
   .itens .tam{color:var(--fraco);font-variant-numeric:tabular-nums}
   .rar{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--display);letter-spacing:.1em;text-transform:uppercase}
   .rar::before{content:"";width:8px;height:8px;background:currentColor;transform:rotate(45deg)}
-  .r-leg{color:var(--legendary)} .r-epic{color:var(--epic)}
+  .r-mythic{color:var(--mythic)} .r-leg{color:var(--legendary)} .r-epic{color:var(--epic)} .r-rare{color:var(--rare)}
   .scan.ouvindo .match{opacity:.18}
   .scan.ouvindo .itens li{opacity:0;clip-path:inset(0 100% 0 0);transition-duration:.15s;transition-delay:0s}
   .fonte{margin-top:14px;font-size:13px;color:var(--fraco)}
@@ -197,6 +202,7 @@
     .fim .cta{width:100%}
     .no-pc .acoes>*{flex:1 1 100%}
     .scan{padding:18px 16px}
+    .scan-top>span:first-child{display:none}
     .itens li{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}
     .itens .rar{grid-column:1/-1;grid-row:2}
     .passo::before{font-size:56px}
@@ -255,21 +261,26 @@
   </div>
 
   <figure class="scan cantos" id="scan" aria-labelledby="scan-legenda">
-    <div class="scan-top"><span>Som Scanner</span><button type="button" class="de-novo" id="de-novo" hidden data-i18n="deNovo">Ouvir de novo</button><span class="estado" aria-hidden="true"><i></i><span id="estado">Reconhecido</span></span></div>
+    <div class="scan-top"><span>Som Scanner</span><button type="button" class="ouvir-som" id="ouvir-som" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span data-i18n="ouvirSom">Ouvir o som</span></button><span class="estado" aria-hidden="true"><i></i><span id="estado">Reconhecido</span></span></div>
     <div class="onda" aria-hidden="true">
       <span style="--h:.18"></span><span style="--h:.26"></span><span style="--h:.22"></span><span style="--h:.4"></span><span style="--h:.62"></span><span style="--h:.9"></span><span style="--h:.55"></span><span style="--h:.78"></span><span style="--h:.34"></span><span style="--h:.48"></span><span style="--h:.3"></span><span style="--h:.2"></span><span style="--h:.16"></span><span style="--h:.24"></span><span style="--h:.52"></span><span style="--h:.96"></span><span style="--h:.7"></span><span style="--h:1"></span><span style="--h:.6"></span><span style="--h:.82"></span><span style="--h:.44"></span><span style="--h:.36"></span><span style="--h:.28"></span><span style="--h:.22"></span><span style="--h:.18"></span><span style="--h:.3"></span><span style="--h:.42"></span><span style="--h:.66"></span><span style="--h:.5"></span><span style="--h:.38"></span><span style="--h:.26"></span><span style="--h:.2"></span><span style="--h:.16"></span><span style="--h:.14"></span><span style="--h:.2"></span><span style="--h:.24"></span><span style="--h:.18"></span><span style="--h:.14"></span><span style="--h:.12"></span><span style="--h:.1"></span>
     </div>
     <div class="match">
-      <div><strong>Item_Container_Big_Metal_Up</strong><small data-i18n="possiveis">5 itens possíveis</small></div>
-      <span class="pct" id="pct">100%</span>
+      <div><strong>Med Statue</strong><small data-i18n="possiveis">9 itens com esse som</small></div>
+      <span class="pct" id="pct" data-alvo="93">93%</span>
     </div>
-    <ul class="itens">
-      <li style="--i:0"><span>Fuel tank</span><span class="tam">2x3</span><span class="rar r-leg">Legendary</span></li>
-      <li style="--i:1"><span>High Energy Fuel</span><span class="tam">2x2</span><span class="rar r-leg">Legendary</span></li>
-      <li style="--i:2"><span>Oil Drum</span><span class="tam">2x2</span><span class="rar r-epic">Epic</span></li>
-      <li style="--i:3"><span>Portable Fuel Canister</span><span class="tam">1x2</span><span class="rar r-epic">Epic</span></li>
-      <li style="--i:4"><span>Propane Tank</span><span class="tam">2x2</span><span class="rar r-epic">Epic</span></li>
+    <ul class="tags" aria-label="Raridades">
+      <li class="r-mythic">3 Mythic</li><li class="r-leg">4 Legendary</li><li class="r-epic">1 Epic</li><li class="r-rare">1 Rare</li>
     </ul>
+    <ul class="itens">
+      <li style="--i:0"><span>Gold Snake</span><span class="tam">2x2</span><span class="rar r-mythic">Mythic</span></li>
+      <li style="--i:1"><span>Majestic Sculpture</span><span class="tam">2x3</span><span class="rar r-mythic">Mythic</span></li>
+      <li style="--i:2"><span>Gold Cube</span><span class="tam">1x1</span><span class="rar r-leg">Legendary</span></li>
+      <li style="--i:3"><span>Gold Cup</span><span class="tam">1x2</span><span class="rar r-leg">Legendary</span></li>
+      <li style="--i:4"><span>K7-L Cipher Machine</span><span class="tam">2x2</span><span class="rar r-leg">Legendary</span></li>
+      <li style="--i:5" class="mais" data-i18n="mais">+ 4 outros itens</li>
+    </ul>
+    <audio id="som" preload="auto" src="Item_Misc_Med_Statue_Up.ogg"></audio>
     <figcaption class="fonte" id="scan-legenda" data-i18n="fonte">Exemplo: resultado de uma captura real do programa.</figcaption>
   </figure>
   <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.getElementById('scan').classList.add('ouvindo');}</script>
@@ -279,7 +290,7 @@
   <h2 data-i18n="s1">O que ele faz</h2>
   <p data-i18n="s1sub">Sem ficar testando som por som num site: ele faz a comparação sozinho.</p>
   <figure class="print">
-    <div class="cantos"><img src="print-recorte.png" alt="Tela do Som Scanner reconhecendo o som de uma carga" data-i18n-alt="printAlt" width="1100" height="720" loading="lazy" decoding="async"></div>
+    <div class="cantos"><img src="print-interface-1180.webp" srcset="print-interface-1180.webp 1180w, print-interface.webp 2360w" sizes="(max-width:1200px) 100vw, 1144px" alt="Tela do Som Scanner 1.2.1 reconhecendo o som do Med Statue" data-i18n-alt="printAlt" width="2360" height="1640" loading="lazy" decoding="async"></div>
     <figcaption data-i18n="printLeg">A tela do programa reconhecendo uma carga</figcaption>
   </figure>
   <div class="recursos">
@@ -301,7 +312,7 @@
     <div class="recurso">
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M26 16a10 10 0 1 1-3-7.1"/><path d="M26 4v6h-6"/></svg>
       <h3 data-i18n="r4t">Aprende com você</h3>
-      <p data-i18n="r4">Errou? Clique em "Errou, era outro" e mostre qual era o certo. Da próxima vez ele acerta.</p>
+      <p data-i18n="r4">Errou? Clique em "Era outro som" e mostre qual era o certo. Da próxima vez ele acerta.</p>
     </div>
   </div>
 </div></section>
@@ -327,7 +338,7 @@
     <details open><summary><span data-i18n="q1">Isso mexe no jogo?</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
       <p data-i18n="a1">Não. Ele só escuta o áudio que já sai no seu PC, como se você tivesse decorado os sons. Não lê nem altera nada do jogo. Mesmo assim, o uso é por sua conta: confira os termos do jogo.</p></details>
     <details><summary><span data-i18n="q2">Ele não reconheceu o som. E agora?</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
-      <p data-i18n="a2">Aumente a Sensibilidade, diminua a Exigência e confira os filtros de tamanho e tipo. Se ele chutou errado, use o botão "Errou, era outro" para ensinar o som certo.</p></details>
+      <p data-i18n="a2">Aumente a Sensibilidade, diminua a Exigência e confira os filtros de tamanho e tipo. Se ele chutou errado, use o botão "Era outro som" para ensinar o som certo.</p></details>
     <details><summary><span data-i18n="q3">Funciona com fone?</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
       <p data-i18n="a3">Sim. Ele capta o áudio do dispositivo de saída padrão do Windows, seja fone ou caixa de som.</p></details>
     <details><summary><span data-i18n="q4">Funciona no celular ou no Mac?</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></summary>
@@ -381,13 +392,13 @@
     celTexto:'Som Scanner is a Windows app. Open this page on the PC you play on to download it.',
     copiar:'Copy link', compartilhar:'Share', mesmoAssim:'Download the installer anyway',
     c1:'Doesn’t read or change the game', c2:'Only listens to audio already playing on your PC', c3:'Downloads straight from GitHub',
-    deNovo:'Listen again', possiveis:'5 possible items', fonte:'Example: result from a real capture of the app.',
+    ouvirSom:'Play the sound', possiveis:'9 items with this sound', mais:'+ 4 more items', fonte:'Example: result from a real capture of the app.',
     s1:'What it does', s1sub:'No more testing sounds one by one on a website: it does the comparison for you.',
-    printAlt:'Som Scanner window recognizing a cargo sound', printLeg:'The app recognizing a cargo',
+    printAlt:'Som Scanner 1.2.1 window recognizing the Med Statue sound', printLeg:'The app recognizing a cargo',
     r1t:'Instant recognition', r1:'As soon as you drag the cargo, it shows its guess in under a second. You can choose to listen to the game only and ignore other sounds on your PC.',
     r2t:'Items and rarities', r2:'Lists every possible item with its size, color-coded rarity, category and which cargo types it shows up in.',
     r3t:'In-game filters', r3:'Pick the size (1x1 to 3x2) and the cargo type to see only what can really be inside.',
-    r4t:'Learns from you', r4:'Wrong guess? Click "Errou, era outro" (wrong, it was another) and show it the right one. Next time it gets it.',
+    r4t:'Learns from you', r4:'Wrong guess? Click "Era outro som" (it was another sound) and show it the right one. Next time it gets it.',
     s2:'How to use it', s2sub:'Three steps from download to your first guess.',
     p1t:'Download and install', p1:'Open <code>SomScanner-Setup.exe</code> and follow the installer.',
     aviso:'Because the app is new, Windows may show "Windows protected your PC". Click <b>More info</b>, then <b>Run anyway</b>.',
@@ -395,7 +406,7 @@
     p3t:'Drag the cargo at the merchant', p3:'The guess shows up right away with the possible items. You can filter by cargo size and type.',
     s3:'Questions',
     q1:'Does it touch the game?', a1:'No. It only listens to the audio already playing on your PC, as if you had memorized the sounds. It doesn’t read or change anything in the game. Still, you use it at your own risk: check the game’s terms.',
-    q2:'It didn’t recognize the sound. Now what?', a2:'Raise "Sensibilidade" (sensitivity), lower "Exigência" (match threshold) and check the size and type filters. If it guessed wrong, use the "Errou, era outro" button to teach it the right sound.',
+    q2:'It didn’t recognize the sound. Now what?', a2:'Raise "Sensibilidade" (sensitivity), lower "Exigência" (match threshold) and check the size and type filters. If it guessed wrong, use the "Era outro som" button to teach it the right sound.',
     q3:'Does it work with headphones?', a3:'Yes. It captures audio from the default Windows output device, headphones or speakers.',
     q4:'Does it work on my phone or Mac?', a4:'No. Som Scanner is a Windows 10 and 11 (64-bit) app and has to run on the same PC as the game.',
     q5:'How do I uninstall it?', a5:'Windows Settings → Apps → Som Scanner → Uninstall.',
@@ -480,34 +491,41 @@
 
   /* ---------- painel do scanner ---------- */
   if(!scan) return;
-  var estado=document.getElementById('estado'), pct=document.getElementById('pct'), botao=document.getElementById('de-novo');
+  var estado=document.getElementById('estado'), pct=document.getElementById('pct'), botao=document.getElementById('ouvir-som'), som=document.getElementById('som');
+  var alvo=parseInt(pct.getAttribute('data-alvo'),10)||100;
   $('.onda span',scan).forEach(function(s,i){s.style.setProperty('--k',i);});
-  if(reduz) return;
-  var rodando=false, ciclos=0;
+  var timers=[], ciclos=0;
+  function limpar(){timers.forEach(clearTimeout); timers=[];}
+  function depois(fn,ms){timers.push(setTimeout(fn,ms));}
   function contar(){
+    if(reduz){pct.textContent=alvo+'%'; return;}
     var ini=null, dur=700;
     function passo(ts){
       if(ini===null) ini=ts;
       var p=Math.min(1,(ts-ini)/dur), e=1-Math.pow(1-p,4);
-      pct.textContent=Math.round(e*100)+'%';
+      pct.textContent=Math.round(e*alvo)+'%';
       if(p<1) requestAnimationFrame(passo);
     }
     requestAnimationFrame(passo);
   }
   function ouvir(){
-    rodando=true; botao.hidden=true;
     scan.classList.add('ouvindo'); estado.textContent=t('ouvindo'); pct.textContent='0%';
-    setTimeout(reconhecer,1700);
   }
-  function reconhecer(){
+  function reconhecer(auto){
     scan.classList.remove('ouvindo'); estado.textContent=t('reconhecido'); contar();
-    ciclos++;
-    if(ciclos<2&&!document.hidden){setTimeout(ouvir,5600);}
-    else{rodando=false; botao.hidden=false;}
+    botao.setAttribute('aria-pressed','false');
+    if(auto){ ciclos++; if(ciclos<2&&!document.hidden) depois(function(){ouvir(); depois(function(){reconhecer(true);},1700);},5600); }
   }
-  botao.addEventListener('click',function(){if(!rodando){ciclos=1; ouvir();}});
-  estado.textContent=t('ouvindo'); pct.textContent='0%';
-  rodando=true; setTimeout(reconhecer,1700);
+  /* botão "Ouvir o som": só aparece se o navegador toca Ogg/Opus */
+  if(som&&som.canPlayType&&som.canPlayType('audio/ogg; codecs="opus"')){
+    som.volume=.8; botao.hidden=false;
+    botao.addEventListener('click',function(){
+      limpar(); ciclos=2; botao.setAttribute('aria-pressed','true'); ouvir();
+      depois(function(){ try{som.currentTime=0; var p=som.play(); if(p&&p['catch']) p['catch'](function(){});}catch(e){} },250);
+      depois(function(){reconhecer(false);},1300);
+    });
+  }
+  if(!reduz){ ouvir(); depois(function(){reconhecer(true);},1700); }
 })();
 </script>
 </body>

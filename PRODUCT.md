@@ -45,9 +45,11 @@ The program runs next to the game, optionally always on top. Flow: install with 
 
 ## Evidence on Hand
 
-- `print-recorte.png`: a screenshot of the program (v1.1.0) recognizing a sound.
+- `print-interface.webp` / `print-interface-1180.webp`: screenshot of the program (v1.2.1) recognizing the Med Statue sound (93%, 9 items: 3 Mythic, 4 Legendary, 1 Epic, 1 Rare).
+- `Item_Misc_Med_Statue_Up.ogg`: the Med Statue cargo sound (0.4 s, Ogg/Opus), played by the hero demo card on click. It is game audio, published by the user's choice.
+- App button labels as of v1.2.1: "Acertou", "Era outro som", "Não é item"; controls "Ouvir: Só o jogo", "Exigência", "Sensibilidade", "Modo compacto", "Banco de sons".
 - `icone.png`, `favicon.png`.
-- Version 1.1.0 (latest GitHub release, 2026-11-03).
+- Version 1.2.1 (latest GitHub release as of 2026-11-04; the page reads it live from the GitHub API).
 - No testimonials, download counts, videos, or accuracy metrics exist. Do not make them up.
 
 ## Product Principles
